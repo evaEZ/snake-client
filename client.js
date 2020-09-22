@@ -14,10 +14,33 @@ const connect = function(){
   conn.on('connect',function(){
     console.log("Successfully connected to game server");
     conn.write("Name: EZ");
+/*
+    setTimeout(()=>{
+      conn.write("Move: up");
+    }, 50);
+    setTimeout(()=>{
+      conn.write("Move: up");
+    }, 100);
+    setTimeout(()=>{
+      conn.write("Move: up");
+    }, 150);
+    setTimeout(()=>{
+      conn.write("Move: up");
+    }, 200);
+    setTimeout(()=>{
+      conn.write("Move: up");
+    }, 250);
+*/
+
+/*
+    setInterval(()=>{
+      conn.write("Move: up");
+    }, 50);
+*/
   });
 
-
 }
+
 module.exports = {
   connect
 }
