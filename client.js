@@ -11,10 +11,13 @@ const connect = function(){
   //interpret incoming data as text
   conn.setEncoding('utf8');
 
-  return conn;
+  conn.on('connect',function(){
+    console.log("Successfully connected to game server");
+    conn.write("Name: EZ");
+  });
+
+
 }
-
-
 module.exports = {
   connect
 }
