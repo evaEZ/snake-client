@@ -11,6 +11,14 @@ const connect = function(){
   //interpret incoming data as text
   conn.setEncoding('utf8');
 
+  const setupInput = function(){
+    const stdin = process.stdin;
+    stdin.setRawMode(true);
+    stdin.setEncoding('utf8');
+    stdin.resume();
+    return stdin;
+  }
+
   conn.on('connect',function(){
     console.log("Successfully connected to game server");
     conn.write("Name: EZ");
@@ -38,6 +46,12 @@ const connect = function(){
     }, 50);
 */
   });
+
+  const handleUserInput = function() {
+    setupInput('data',() => {
+      
+    });
+  }
 
 }
 
