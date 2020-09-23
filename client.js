@@ -9,15 +9,7 @@ const connect = function(){
     port: 50541
   });
   //interpret incoming data as text
-  conn.setEncoding('utf8');
-
-  const setupInput = function(){
-    const stdin = process.stdin;
-    stdin.setRawMode(true);
-    stdin.setEncoding('utf8');
-    stdin.resume();
-    return stdin;
-  }
+  conn.setEncoding('utf8')
 
   conn.on('connect',function(){
     console.log("Successfully connected to game server");
@@ -46,13 +38,21 @@ const connect = function(){
     }, 50);
 */
   });
+}
 
-  const handleUserInput = function() {
-    setupInput('data',() => {
-      
-    });
+const setupInput = function(){
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding('utf8');
+  stdin.resume();
+  stdin.on('data', handleUserInput(data));
+  return stdin;
+}
+
+const handleUserInput = function(key) {
+  if(key && key.name === "c" && key.ctrl) {
+    process.exit();
   }
-
 }
 
 module.exports = {
